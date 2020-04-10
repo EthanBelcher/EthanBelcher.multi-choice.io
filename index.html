@@ -1,1 +1,110 @@
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Chat box */
+      #chatbox {
+        background-position: 10px 10px;
+        -webkit-transition: width 0.5s ease-in-out;
+        background-repeat: no-repeat;
+        background-color: white;
+        box-sizing: border-box;
+        font-size: 16px;
+        display: table;
+        padding: 10px 20px 12px 15px;
+        border: 1px solid #cccccc;
+        height: 40.8em;
+        width: 52em;
+      }
+      
+      /* Chatbox inside border*/
+      .chatboxborder {
+        background-position: 10px 10px;
+        -webkit-transition: width 0.5s ease-in-out;
+        background-repeat: no-repeat;
+        background-color: white;
+        vertical-align: bottom;
+        overflow-y: scroll;
+        transition: width 0.5s ease-in-out;
+        box-sizing: border-box;
+        font-size: 16px;
+        display: table-cell;
+        padding: 10px 20px 12px 15px;
+        height: 2.8em;
+        border: 1px solid #cccccc;
+        width: 20em;
+      }
+      
+      /* Chat message */
+      #chatspace {
+        transition-duration: 5s;
+        background-color: #ECECEC;
+        position: fixed;
+        z-index: 4;
+        bottom: 0px;
+        height: 20px;
+        border: 1px solid #000;
+        right: 240px;
+        left: 20px;
+      }
+      
+      #chatbox p {
+        transition-duration: 5s;
+        -moz-border-radius: 4px;
+        background: #E6E6E6;
+        padding: 1em;
+        margin: auto;
+        border: 1px solid #BDBDBD;
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <div id="boxtwo">
+      <script>
+        // Your username is asked when a user opens the window //
+        var name
+        window.addEventListener('load',
+          function() {
+          var person = prompt("Enter your username");
+            if (person != null) {
+              document.getElementById("username").innerHTML =
+                "Welcome, " + person + ".";
+              // If the prompt is empty, another appears //
+              while (person == "" || person == null) {
+                person = prompt("Your username can't be empty!", "");
+                document.getElementById("username").innerHTML =
+                  "Welcome, " + person + ".";
+              }
+            }
+          }, false);
+      </script>
+      <p id="username"></p>
+      <br>
+      <br>
+    </div>
+    <div class="container">
+      <div class="chatbox">
+        <div class="chatboxborder" id="chatboxborder">
+        </div>
+      </div>
+    </div>
+    <div class="fixed" id="boxfive">
+      <script>
+        // The message is showed in the the chatbox //
+        $(document).ready(function () {
+          $('#submitmsg').click(function() {
+            var message = $('#usermsg').val();
+            $('#chatboxborder').append('<p id="username">' + name + ' says: ' + message + '</p>' + '<br>');
+            $('#usermsg').val('');
+          });
+        });
+      </script>
+      <form name="message">
+        <input style="width: 83%" name="usermsg" type="text" id="usermsg" size="63" placeholder="Say Something">
+        <button type="button" id="submitmsg" value="Send">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
